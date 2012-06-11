@@ -6,21 +6,24 @@
  * define() calls.
  */
 
-var root = ((typeof SETTINGS !== 'undefined' && SETTINGS.root) ? SETTINGS.root : '') + 'shared';
 var MODULE_PATHS = (typeof MODULE_PATHS !== 'undefined') ? MODULE_PATHS : {};
 
-// Common libraries
-MODULE_PATHS['Class']             = root + '/class';                 // Mutates global namespace
-MODULE_PATHS['jquery']            = root + '/jquery-1.7.2';          // Mutates global namespace
-MODULE_PATHS['jqueryui']          = root + '/jquery-ui-1.8.18';      // Mutates jquery
-// Vendor libraries
-MODULE_PATHS['jquery-layout']     = root + '/vendor/jquery.layout';  // Mutates jquery
-MODULE_PATHS['jstree']            = root + '/vendor/jquery.jstree';  // Mutates jquery
-MODULE_PATHS['jqgrid']            = root + '/vendor/jquery.jqgrid';  // Mutates jquery
-MODULE_PATHS['jqgrid-locale-en']  = root + '/vendor/grid.locale.en'; // Mutates jqgrid
-MODULE_PATHS['jqgrid-locale-de']  = root + '/vendor/grid.locale.de'; // Mutates jqgrid
-// Custom libraries
-MODULE_PATHS['PubSub']            = root + '/pubsub';
-MODULE_PATHS['RepositoryBrowser'] = root + '/repository-browser/repository-browser.js';
-MODULE_PATHS['repository-browser-i18n-de'] = root + '/repository-browser/repository-browser.js';
-MODULE_PATHS['repository-browser-i18n-en'] = root + '/repository-browser/repository-browser.js';
+(function () {
+	var root = ((typeof SETTINGS !== 'undefined' && SETTINGS.root) ? SETTINGS.root : '') + 'shared';
+
+	// Common vendor libraries
+	MODULE_PATHS['Class']             = root + '/vendor/class';            // Mutates global namespace
+	MODULE_PATHS['jquery']            = root + '/vendor/jquery-1.7.2';     // Mutates global namespace
+	MODULE_PATHS['jqueryui']          = root + '/vendor/jquery-ui-1.8.18'; // Mutates jquery
+	// Plugin vendor libraries
+	MODULE_PATHS['jquery-layout']     = root + '/vendor/jquery.layout';    // Mutates jquery
+	MODULE_PATHS['jstree']            = root + '/vendor/jquery.jstree';    // Mutates jquery
+	MODULE_PATHS['jqgrid']            = root + '/vendor/jquery.jqgrid';    // Mutates jquery
+	MODULE_PATHS['jqgrid-locale-en']  = root + '/vendor/grid.locale.en';   // Mutates jqgrid
+	MODULE_PATHS['jqgrid-locale-de']  = root + '/vendor/grid.locale.de';   // Mutates jqgrid
+	// Custom libraries
+	MODULE_PATHS['PubSub']            = root + '/pubsub';
+	MODULE_PATHS['RepositoryBrowser'] = root + '/repository-browser/debug/repository-browser.js';
+	MODULE_PATHS['repository-browser-i18n-de'] = root + '/repository-browser/debug/repository-browser';
+	MODULE_PATHS['repository-browser-i18n-en'] = root + '/repository-browser/debug/repository-browser';
+}())
