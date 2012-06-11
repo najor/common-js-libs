@@ -55,30 +55,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jslint-maven-plugin</artifactId>
-				<version>1.0.1</version>
-				<executions>
-					<execution>
-						<phase>test</phase>
-						<goals>
-							<goal>jslint</goal>
-						</goals>
-						<configuration>
-							<excludes>
-								<exclude>vendor/**</exclude>
-							</excludes>
-							<disallowInsecureCharsInRegExp>false</disallowInsecureCharsInRegExp>
-							<allowOneVarStatementPerFunction>false</allowOneVarStatementPerFunction>
-							<predefinedVars>window, global, process, define, require, jQuery, GCN</predefinedVars>
-							<assumeABrowser>true</assumeABrowser>
-							<tolerateContinuation>true</tolerateContinuation>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
 </project>
