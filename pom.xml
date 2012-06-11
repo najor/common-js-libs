@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>common-js-libs</artifactId>
+	<groupId>com.gentics</groupId>
+	<version>0.1-SNAPSHOT</version>
+
+	<name>Gentics CommonJS Modules of Popular JavaScript Libraries</name>
+	<packaging>pom</packaging>
+	<description>A collection of popular JavaScript libraries that have been
+	adapted to CommonJS modules.</description>
+
+	<url>http://www.gentics.com</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.build.timestamp.format>yyyyMMdd-HHmmss</maven.build.timestamp.format>
+		<phantomjs.bin>/opt/phantomjs/bin/phantomjs</phantomjs.bin>
+	</properties>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/js</directory>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
+
+		<testResources>
+			<testResource>
+				<directory>src/test/js</directory>
+			</testResource>
+		</testResources>
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.2.1</version>
+				<executions>
+					<execution>
+						<id>dist</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<attach>true</attach>
+							<appendAssemblyId>false</appendAssemblyId>
+							<descriptors>
+								<descriptor>${project.basedir}/src/main/assembly/package.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jslint-maven-plugin</artifactId>
+				<version>1.0.1</version>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>jslint</goal>
+						</goals>
+						<configuration>
+							<excludes>
+								<exclude>vendor/**</exclude>
+							</excludes>
+							<disallowInsecureCharsInRegExp>false</disallowInsecureCharsInRegExp>
+							<allowOneVarStatementPerFunction>false</allowOneVarStatementPerFunction>
+							<predefinedVars>window, global, process, define, require, jQuery, GCN</predefinedVars>
+							<assumeABrowser>true</assumeABrowser>
+							<tolerateContinuation>true</tolerateContinuation>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<name>oss.sonatype.org</name>
+			<id>oss.sonatype.org</id>
+			<url>http://oss.sonatype.org/content/groups/public</url>
+		</pluginRepository>
+	</pluginRepositories>
+</project>
