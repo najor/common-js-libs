@@ -22,3 +22,5 @@ MODULE_PATHS['jqgrid-locale-de']  = root + '/vendor/grid.locale.de'; // Mutates 
 // Custom libraries
 MODULE_PATHS['PubSub']            = root + '/pubsub';
 MODULE_PATHS['RepositoryBrowser'] = root + '/repository-browser/repository-browser.js';
+MODULE_PATHS['repository-browser-i18n-de'] = root + '/repository-browser/repository-browser.js';
+MODULE_PATHS['repository-browser-i18n-en'] = root + '/repository-browser/repository-browser.js';
