@@ -7,32 +7,9 @@
 		<format>zip</format>
 	</formats>
 	<fileSets>
-		<!--
 		<fileSet>
-			<directory>${basedir}/src/main/js/lib</directory>
-			<outputDirectory>/repository-browser/source</outputDirectory>
-			<includes>
-				<include>**</include>
-			</includes>
-		</fileSet>
-		-->
-		<fileSet>
-			<directory>${basedir}/src/main/js/vendor</directory>
-			<outputDirectory>/vendor</outputDirectory>
-			<includes>
-				<include>**</include>
-			</includes>
-		</fileSet>
-		<fileSet>
-			<directory>${basedir}/target/bin</directory>
-			<outputDirectory>/repository-browser/bin</outputDirectory>
-			<includes>
-				<include>**</include>
-			</includes>
-		</fileSet>
-		<fileSet>
-			<directory>${basedir}/target/debug</directory>
-			<outputDirectory>/repository-browser/debug</outputDirectory>
+			<directory>${basedir}/src/main/js</directory>
+			<outputDirectory>/</outputDirectory>
 			<includes>
 				<include>**</include>
 			</includes>
