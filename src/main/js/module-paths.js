@@ -23,7 +23,7 @@ var MODULE_PATHS = (typeof MODULE_PATHS !== 'undefined') ? MODULE_PATHS : {};
 	MODULE_PATHS['jqgrid-locale-de']  = root + '/vendor/grid.locale.de';   // Mutates jqgrid
 	// Custom libraries
 	MODULE_PATHS['PubSub']            = root + '/pubsub';
-	MODULE_PATHS['RepositoryBrowser'] = root + '/repository-browser/debug/repository-browser.js';
-	MODULE_PATHS['repository-browser-i18n-de'] = root + '/repository-browser/debug/repository-browser';
-	MODULE_PATHS['repository-browser-i18n-en'] = root + '/repository-browser/debug/repository-browser';
+	MODULE_PATHS['RepositoryBrowser'] = root + '/repository-browser/js/repository-browser-unminified';
+	MODULE_PATHS['repository-browser-i18n-de'] = MODULE_PATHS['RepositoryBrowser'];
+	MODULE_PATHS['repository-browser-i18n-en'] = MODULE_PATHS['RepositoryBrowser'];
 }())
