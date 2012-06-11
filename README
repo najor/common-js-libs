@@ -1,0 +1,12 @@
+Common Shared JavaScript Libraries
+----------------------------------
+
+Herein contained are a number of popular JavaScript libraries that are often
+used as basic frameworks, and utilities across many of our projects.
+
+These libraries have been slightly modified, where necessary, such that they
+expose their API via define() calls so that they can be used as CommonJS
+modules.
+
+Also contained is one module-paths.js file which contains a mapping of all
+shared CommonJS modules files provided by all our libraries.
