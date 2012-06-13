@@ -1,29 +1,50 @@
 /**
  * @overview: Map of shared modules and the location where they are provided.
  *
- * The MODULE_PATHS maps module names to the relative locations of the files
+ * The __DEPS__.paths maps module names to the relative locations of the files
  * which provide them.  This map is used to resolve dependencies listed in
  * define() calls.
+ *
+ * The global __DEPS__ object looks like something like this:
+ * {
+ *   root: './',
+ *   paths: {},
+ *   lang: 'en'
+ * }
  */
 
-var MODULE_PATHS = (typeof MODULE_PATHS !== 'undefined') ? MODULE_PATHS : {};
+(function (global) {
+	'use strict';
 
-(function () {
-	var root = ((typeof SETTINGS !== 'undefined' && SETTINGS.root) ? SETTINGS.root : '') + 'shared';
+	var DependencyManagement = global.__DEPS__ || (global.__DEPS__ = {});
+
+	if (!DependencyManagement.root) {
+		DependencyManagement.root = '';
+	}
+
+	if (!DependencyManagement.lang) {
+		DependencyManagement.lang = 'en';
+	}
+
+	if (!DependencyManagement.paths) {
+		DependencyManagement.paths = {};
+	}
+
+	var root = DependencyManagement.root + 'shared';
 
 	// Common vendor libraries
-	MODULE_PATHS['Class']             = root + '/vendor/class';            // Mutates global namespace
-	MODULE_PATHS['jquery']            = root + '/vendor/jquery-1.7.2';     // Mutates global namespace
-	MODULE_PATHS['jqueryui']          = root + '/vendor/jquery-ui-1.8.18'; // Mutates jquery
+	DependencyManagement.paths['Class'] = root + '/vendor/class';                     // Mutates global
+	DependencyManagement.paths['jquery'] = root + '/vendor/jquery-1.7.2';             // Mutates global
+	DependencyManagement.paths['jqueryui'] = root + '/vendor/jquery-ui-1.8.18';       // Mutates jquery
 	// Plugin vendor libraries
-	MODULE_PATHS['jquery-layout']     = root + '/vendor/jquery.layout';    // Mutates jquery
-	MODULE_PATHS['jstree']            = root + '/vendor/jquery.jstree';    // Mutates jquery
-	MODULE_PATHS['jqgrid']            = root + '/vendor/jquery.jqgrid';    // Mutates jquery
-	MODULE_PATHS['jqgrid-locale-en']  = root + '/vendor/grid.locale.en';   // Mutates jqgrid
-	MODULE_PATHS['jqgrid-locale-de']  = root + '/vendor/grid.locale.de';   // Mutates jqgrid
-	// Custom libraries
-	MODULE_PATHS['PubSub']            = root + '/pubsub/js/pubsub';
-	MODULE_PATHS['RepositoryBrowser'] = root + '/repository-browser/js/repository-browser-unminified';
-	MODULE_PATHS['repository-browser-i18n-de'] = MODULE_PATHS['RepositoryBrowser'];
-	MODULE_PATHS['repository-browser-i18n-en'] = MODULE_PATHS['RepositoryBrowser'];
-}())
+	DependencyManagement.paths['jquery-layout'] = root + '/vendor/jquery.layout';     // Mutates jquery
+	DependencyManagement.paths['jstree'] = root + '/vendor/jquery.jstree';            // Mutates jquery
+	DependencyManagement.paths['jqgrid'] = root + '/vendor/jquery.jqgrid';            // Mutates jquery
+	DependencyManagement.paths['jqgrid-locale-en'] = root + '/vendor/grid.locale.en'; // Mutates jqgrid
+	DependencyManagement.paths['jqgrid-locale-de'] = root + '/vendor/grid.locale.de'; // Mutates jqgrid
+	// Gentics libraries
+	DependencyManagement.paths['PubSub'] = root + '/pubsub/js/pubsub';
+	DependencyManagement.paths['RepositoryBrowser'] = root + '/repository-browser/js/repository-browser-unminified';
+	DependencyManagement.paths['repository-browser-i18n-de'] = DependencyManagement.paths['RepositoryBrowser'];
+	DependencyManagement.paths['repository-browser-i18n-en'] = DependencyManagement.paths['RepositoryBrowser'];
+}(this));
